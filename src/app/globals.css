@@ -1,26 +1,60 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #F3F6F5; /* canvas */
   --foreground: #171717;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: #0B5E5E;
+  --color-nav: #0E2A2A;
+  --color-primary-soft: #9CCFC8;
+  --color-canvas: #F3F6F5;
+  --color-success: #166534;
+  --color-warning: #B45309;
+  --color-alert: #C2410C;
+  --color-critical: #991B1B;
+  --color-card: #ffffff;
+  --font-sans: var(--font-ibm-plex-sans);
+  --radius-lg: 10px;
+  --radius-md: 6px;
+  --radius-full: 999px;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ensure all interactive elements have pointer cursor */
+button, 
+a, 
+select, 
+label,
+input[type="submit"], 
+input[type="button"], 
+input[type="checkbox"], 
+input[type="radio"], 
+[role="button"], 
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Revert pointer cursor for disabled buttons */
+button:disabled, 
+input:disabled {
+  cursor: not-allowed !important;
+}
+
+/* Hide scrollbars but keep functionality */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
