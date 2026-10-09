@@ -14,20 +14,20 @@ export default function Patient360() {
   return (
     <>
         {/* Header */}
-        <header className="flex items-center justify-between px-8 py-6 bg-canvas shrink-0">
+        <header className="flex flex-col md:flex-row md:items-center justify-between px-4 md:px-8 py-4 md:py-6 bg-canvas shrink-0 gap-4">
           <div>
             <BackButton label="Back to Patients" />
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="relative">
+          <div className="flex flex-wrap items-center gap-2 md:gap-4 w-full md:w-auto">
+            <div className="relative w-full md:w-auto">
               <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Search size={16} className="text-gray-400" />
               </div>
               <input
                 type="text"
                 placeholder="Search patient, UHID, phone..."
-                className="pl-9 pr-4 py-2 border border-gray-200 rounded-full text-sm w-64 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="pl-9 pr-4 py-2 border border-gray-200 rounded-full text-sm w-full md:w-64 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
             </div>
             
@@ -42,11 +42,11 @@ export default function Patient360() {
         </header>
 
         {/* Scrollable Content */}
-        <div className="flex-1 overflow-y-auto px-8 pb-8">
+        <div className="flex-1 overflow-y-auto px-4 md:px-8 pb-4 md:pb-8">
           
           {/* Patient Header Card */}
-          <div className="bg-white rounded-t-xl border border-gray-100 p-6 shadow-sm">
-            <div className="flex justify-between items-start">
+          <div className="bg-white rounded-t-xl border border-gray-100 p-4 md:p-6 shadow-sm">
+            <div className="flex flex-col lg:flex-row justify-between items-start gap-4">
               <div className="flex items-start gap-4">
                 <div className="w-14 h-14 bg-primary-soft/30 rounded-full flex items-center justify-center text-primary font-bold text-xl shrink-0">
                   SG
@@ -93,7 +93,7 @@ export default function Patient360() {
             </div>
             
             {/* Tabs */}
-            <div className="flex gap-6 mt-8 border-b border-gray-100">
+            <div className="flex gap-4 md:gap-6 mt-6 md:mt-8 border-b border-gray-100 overflow-x-auto whitespace-nowrap">
               {tabs.map((tab) => (
                 <button
                   key={tab}
@@ -133,7 +133,7 @@ export default function Patient360() {
             </div>
 
             {/* Right Column - Cards */}
-            <div className="col-span-12 lg:col-span-7 grid grid-cols-2 gap-4 auto-rows-max">
+            <div className="col-span-12 lg:col-span-7 grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4 auto-rows-max">
               
               {/* Clinical Snapshot */}
               <div className="col-span-2 md:col-span-1 bg-white rounded-xl border border-gray-100 p-5 shadow-sm">

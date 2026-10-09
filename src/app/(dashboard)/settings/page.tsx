@@ -31,7 +31,7 @@ export default function SettingsPage() {
       
       {/* Header Area */}
       <div className="bg-white shrink-0 z-10 shadow-sm border-b border-gray-100">
-        <header className="flex items-center justify-between px-10 py-6">
+        <header className="flex flex-col md:flex-row md:items-center justify-between px-4 md:px-10 py-4 md:py-6 gap-4 border-b border-gray-100">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Platform Settings</h1>
             <p className="text-sm text-gray-400 mt-1 font-medium">Manage hospital profile, user roles, and system preferences</p>
@@ -39,7 +39,7 @@ export default function SettingsPage() {
         </header>
 
         {/* Tabs */}
-        <div className="px-10 flex items-center gap-6">
+        <div className="px-4 md:px-10 flex items-center gap-4 md:gap-6 overflow-x-auto whitespace-nowrap scrollbar-hide pt-4">
           {tabs.map((tab) => (
             <button
               key={tab.name}
@@ -56,7 +56,7 @@ export default function SettingsPage() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-auto p-10 scrollbar-hide">
+      <div className="flex-1 overflow-auto p-4 md:p-10 scrollbar-hide">
         
         <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm border border-gray-100">
           
@@ -79,7 +79,7 @@ export default function SettingsPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
                   <div>
                     <label className="cursor-pointer block text-sm font-semibold text-gray-700 mb-1.5">Hospital Name</label>
                     <div className="relative">
@@ -223,7 +223,7 @@ export default function SettingsPage() {
                   <p className="text-sm text-gray-500 mt-1">Connect your CRM with external platforms and tools.</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6 mt-8">
                   {[
                     { name: "Google Calendar", status: "Connected", desc: "Sync doctor schedules seamlessly." },
                     { name: "WhatsApp Business API", status: "Disconnected", desc: "Automate appointment reminders." },

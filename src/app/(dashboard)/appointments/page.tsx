@@ -7,7 +7,18 @@ import BookAppointmentButton from "@/components/ui/BookAppointmentButton";
 import AppointmentActionMenu from "@/components/ui/AppointmentActionMenu";
 import Link from "next/link";
 
-const INITIAL_APPOINTMENTS = [
+export type Appointment = {
+  id: string;
+  time: string;
+  patient: string;
+  doctor: string;
+  dept: string;
+  source: string;
+  status: string;
+  statusType: "primary" | "success" | "warning" | "neutral" | "alert";
+};
+
+const INITIAL_APPOINTMENTS: Appointment[] = [
   { id: "APP-101", time: "09:30 AM", patient: "Ramesh Kulkarni", doctor: "Dr. A. Rao", dept: "Cardiology", source: "App", status: "In consult", statusType: "primary" as const },
   { id: "APP-102", time: "09:45 AM", patient: "Fatima Shaikh", doctor: "Dr. S. Iyer", dept: "Gynaecology", source: "WhatsApp", status: "Checked in", statusType: "success" as const },
   { id: "APP-103", time: "10:00 AM", patient: "Arjun Patil", doctor: "Dr. M. Desai", dept: "Orthopaedics", source: "Referral", status: "Waiting 18m", statusType: "warning" as const },
@@ -30,7 +41,7 @@ export default function AppointmentsPage() {
     return matchesSearch && matchesStatus;
   });
 
-  const handleBookNew = (newApp: any) => {
+  const handleBookNew = (newApp: Appointment) => {
     setAppointments(prev => {
       return [newApp, ...prev];
     });
@@ -55,13 +66,13 @@ export default function AppointmentsPage() {
 
   return (
     <>
-      <header className="flex items-center justify-between px-8 py-6 bg-canvas shrink-0">
+      <header className="flex flex-col md:flex-row md:items-center justify-between px-4 md:px-8 py-4 md:py-6 bg-canvas shrink-0 gap-4">
         <div>
           <h1 className="text-xl font-bold text-gray-900">Appointments Schedule</h1>
           <p className="text-sm text-gray-500 mt-1">Manage and schedule patient visits for today</p>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4 w-full md:w-auto">
           <div className="relative">
             <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
               <Search size={16} className="text-gray-400" />
@@ -71,7 +82,7 @@ export default function AppointmentsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search patient or doctor..."
-              className="pl-9 pr-4 py-2 border border-gray-200 rounded-full text-sm w-64 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
+              className="pl-9 pr-4 py-2 border border-gray-200 rounded-full text-sm w-full md:w-64 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20"
             />
           </div>
           
@@ -80,11 +91,11 @@ export default function AppointmentsPage() {
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto px-8 pb-8">
+      <div className="flex-1 overflow-y-auto px-4 md:px-8 pb-4 md:pb-8">
         <div className="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden flex flex-col h-full">
           
-          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50">
-            <div className="flex items-center gap-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between px-4 md:px-6 py-4 border-b border-gray-100 bg-gray-50 gap-4">
+            <div className="flex items-center gap-4 md:gap-6">
               <div className="flex items-center gap-2 cursor-pointer text-gray-900 font-semibold border-b-2 border-primary pb-1">
                 <Clock size={16} className="text-primary"/> List View
               </div>

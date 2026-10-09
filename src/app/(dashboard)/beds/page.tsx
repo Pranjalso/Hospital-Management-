@@ -34,6 +34,13 @@ const BEDS_DATA = [
   { id: "26", status: "occupied" },
 ];
 
+const BedLegend = ({ colorClass, label }: { colorClass: string, label: string }) => (
+  <div className="flex items-center gap-2.5 cursor-pointer group">
+    <div className={`w-3.5 h-3.5 rounded-sm ${colorClass}`}></div>
+    <span className="text-sm font-medium text-gray-600 group-hover:text-gray-900 transition-colors">{label}</span>
+  </div>
+);
+
 export default function BedsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [showFilters, setShowFilters] = useState(false);
@@ -60,24 +67,17 @@ export default function BedsPage() {
     }
   };
 
-  const BedLegend = ({ colorClass, label }: { colorClass: string, label: string }) => (
-    <div className="flex items-center gap-2.5 cursor-pointer group">
-      <div className={`w-3.5 h-3.5 rounded-sm ${colorClass}`}></div>
-      <span className="text-sm font-medium text-gray-600 group-hover:text-gray-900 transition-colors">{label}</span>
-    </div>
-  );
-
   return (
     <div className="h-full flex flex-col bg-canvas animate-in fade-in duration-300 relative">
       
       {/* Header */}
-      <header className="flex items-center justify-between px-10 py-6 bg-white shrink-0 z-10 border-b border-gray-100">
+      <header className="flex flex-col md:flex-row md:items-center justify-between px-4 md:px-10 py-4 md:py-6 bg-white shrink-0 z-10 border-b border-gray-100 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Bed Board &middot; IPD</h1>
           <p className="text-sm text-gray-400 mt-1 font-medium">Live occupancy updates via WebSockets</p>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-2 md:gap-4 w-full md:w-auto">
           <div className="relative">
             <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
               <Search size={16} className="text-gray-400" />
@@ -87,7 +87,7 @@ export default function BedsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search patient, bed..."
-              className="cursor-text pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm w-72 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-gray-400 font-medium"
+              className="cursor-text pl-9 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm w-full md:w-72 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-gray-400 font-medium"
             />
           </div>
           <button 
@@ -100,13 +100,13 @@ export default function BedsPage() {
       </header>
 
       {/* Main Content */}
-      <div className="flex-1 overflow-y-auto p-10 bg-[#F6F8F8]">
+      <div className="flex-1 overflow-y-auto p-4 md:p-10 bg-[#F6F8F8]">
         <div className="max-w-6xl mx-auto">
           
           <div className="bg-white rounded-xl shadow-sm border border-gray-100/60 overflow-hidden">
             
             {/* Board Header */}
-            <div className="px-8 py-5 border-b border-gray-100 flex items-center justify-between bg-white">
+            <div className="px-4 md:px-8 py-4 md:py-5 border-b border-gray-100 flex flex-col md:flex-row items-start md:items-center justify-between bg-white gap-4">
               <div className="flex items-center gap-3">
                 <h3 className="font-bold text-gray-900 text-lg">Ortho Ward 2</h3>
                 <span className="text-gray-300">&middot;</span>
@@ -126,11 +126,11 @@ export default function BedsPage() {
             </div>
 
             {/* Grid */}
-            <div className="p-10">
+            <div className="p-4 md:p-10">
               {filteredBeds.length === 0 ? (
-                <div className="text-center py-12 text-gray-500 font-medium">No beds found matching "{searchQuery}"</div>
+                <div className="text-center py-12 text-gray-500 font-medium">No beds found matching &quot;{searchQuery}&quot;</div>
               ) : (
-                <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-10 lg:grid-cols-13 gap-3.5">
+                <div className="grid grid-cols-[repeat(auto-fill,minmax(60px,1fr))] gap-3.5">
                   {filteredBeds.map(bed => (
                     <button
                       key={bed.id}
@@ -145,7 +145,7 @@ export default function BedsPage() {
             </div>
 
             {/* Legend */}
-            <div className="px-8 py-5 border-t border-gray-50 bg-white flex flex-wrap items-center gap-8">
+            <div className="px-4 md:px-8 py-4 md:py-5 border-t border-gray-50 bg-white flex flex-wrap items-center gap-4 md:gap-8">
               <BedLegend colorClass="bg-blue-600 rounded-sm" label="Occupied" />
               <BedLegend colorClass="bg-green-600 rounded-sm" label="Vacant &middot; clean" />
               <BedLegend colorClass="bg-slate-900 rounded-sm" label="Cleaning" />

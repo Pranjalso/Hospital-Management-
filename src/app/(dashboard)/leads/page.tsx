@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Search, Filter, Plus, List, Download } from "lucide-react";
-import BranchDropdown from "@/components/ui/BranchDropdown";
-import Link from "next/link";
+import { Search, Plus, List, Download } from "lucide-react";
 
 type Lead = {
   id: string;
@@ -38,7 +36,7 @@ const INITIAL_LEADS: Record<string, Lead[]> = {
 };
 
 export default function LeadsPage() {
-  const [boardData, setBoardData] = useState(INITIAL_LEADS);
+  const [boardData] = useState(INITIAL_LEADS);
   const [viewMode, setViewMode] = useState<'kanban' | 'list'>('kanban');
   const [showAddModal, setShowAddModal] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -58,7 +56,7 @@ export default function LeadsPage() {
     }
   };
 
-  const KanbanCard = ({ lead }: { lead: any }) => (
+  const KanbanCard = ({ lead }: { lead: Lead }) => (
     <div className="bg-white rounded-xl p-5 shadow-sm mb-4 cursor-pointer hover:shadow-md transition-all group border border-transparent hover:border-primary/20">
       <h4 className="font-bold text-gray-900 group-hover:text-primary transition-colors">{lead.name}</h4>
       <p className="text-sm text-gray-500 mt-1 mb-4">{lead.treatment}</p>
@@ -84,7 +82,7 @@ export default function LeadsPage() {
     <div className="h-full flex flex-col bg-canvas animate-in fade-in duration-300">
       
       {/* Header */}
-      <header className="flex items-center justify-between px-10 py-6 bg-white shrink-0 z-10">
+      <header className="flex flex-col md:flex-row md:items-center justify-between px-4 md:px-10 py-4 md:py-6 bg-white shrink-0 z-10 gap-4">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Leads & Enquiries</h1>
           <p className="text-sm text-gray-400 mt-1.5 font-medium">
@@ -92,7 +90,7 @@ export default function LeadsPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-2 md:gap-3 w-full md:w-auto">
           <button 
             onClick={() => setViewMode(viewMode === 'kanban' ? 'list' : 'kanban')}
             className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer"
@@ -123,8 +121,8 @@ export default function LeadsPage() {
       {/* Main Content Area */}
       <div className="flex-1 overflow-auto bg-[#F6F8F8] relative">
         {viewMode === 'kanban' ? (
-          <div className="absolute inset-0 p-10 overflow-x-auto">
-            <div className="flex gap-6 min-w-max h-full">
+          <div className="absolute inset-0 p-4 md:p-10 overflow-x-auto">
+            <div className="flex gap-4 md:gap-6 min-w-max h-full">
               
               {/* New Column */}
               <div className="w-80 flex flex-col">
@@ -179,8 +177,8 @@ export default function LeadsPage() {
             </div>
           </div>
         ) : (
-          <div className="p-10">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden animate-in fade-in">
+          <div className="p-4 md:p-10 overflow-x-auto w-full">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-100 min-w-[600px] overflow-hidden animate-in fade-in">
               <table className="w-full text-sm text-left">
                 <thead className="bg-gray-50 text-gray-500 font-medium">
                   <tr>

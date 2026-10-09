@@ -9,8 +9,17 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Hospital CRM",
-  description: "Hospital Management CRM",
+  title: "Hospital CRM | Enterprise Management",
+  description: "Advanced hospital management system, patient CRM, and analytics dashboard.",
+  applicationName: "Hospital CRM",
+  keywords: ["Hospital", "CRM", "Patient Management", "Healthcare", "Analytics"],
+  authors: [{ name: "Hospital Team" }],
+};
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({

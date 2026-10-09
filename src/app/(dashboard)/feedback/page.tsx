@@ -62,14 +62,14 @@ export default function FeedbackPage() {
       
       {/* Header Area */}
       <div className="bg-white shrink-0 z-10 shadow-sm border-b border-gray-100">
-        <header className="flex items-center justify-between px-10 py-6">
+        <header className="flex flex-col md:flex-row md:items-center justify-between px-4 md:px-10 py-4 md:py-6 gap-4">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Patient Feedback & NPS</h1>
             <p className="text-sm text-gray-400 mt-1 font-medium">Monitor patient satisfaction and Net Promoter Score</p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="relative">
+          <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+            <div className="relative w-full md:w-auto">
               <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Search size={16} className="text-gray-400" />
               </div>
@@ -78,7 +78,7 @@ export default function FeedbackPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search patient, dept..."
-                className="cursor-text pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm w-72 bg-white focus:outline-none focus:ring-2 focus:ring-[#0B5E5E]/20 transition-all placeholder:text-gray-400 font-medium"
+                className="cursor-text pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm w-full md:w-72 bg-white focus:outline-none focus:ring-2 focus:ring-[#0B5E5E]/20 transition-all placeholder:text-gray-400 font-medium"
               />
             </div>
             <button 
@@ -97,10 +97,10 @@ export default function FeedbackPage() {
         </header>
       </div>
 
-      <div className="flex-1 overflow-auto p-10 scrollbar-hide space-y-8">
+      <div className="flex-1 overflow-auto p-4 md:p-10 scrollbar-hide space-y-8">
         
         {/* KPI Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md transition-shadow cursor-pointer">
             <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0">
               <HeartPulse className="text-blue-600" size={24} />
@@ -193,7 +193,7 @@ export default function FeedbackPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 max-w-[300px] truncate text-gray-600 font-medium">
-                      "{fb.comment}"
+                      &quot;{fb.comment}&quot;
                     </td>
                     <td className="px-6 py-4 font-semibold text-gray-600">{fb.date}</td>
                     <td className="px-6 py-4 text-right pr-8">
@@ -332,7 +332,7 @@ export default function FeedbackPage() {
               <div>
                 <h4 className="font-bold text-gray-900 mb-3">Detailed Comment</h4>
                 <div className="p-5 bg-gray-50 rounded-xl border border-gray-100">
-                  <p className="text-gray-700 italic">"{selectedFeedback.comment}"</p>
+                  <p className="text-gray-700 italic">&quot;{selectedFeedback.comment}&quot;</p>
                 </div>
               </div>
 

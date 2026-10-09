@@ -84,14 +84,14 @@ export default function BillingPage() {
       
       {/* Header Area */}
       <div className="bg-white shrink-0 z-10 shadow-sm border-b border-gray-100">
-        <header className="flex items-center justify-between px-10 pt-8 pb-6">
+        <header className="flex flex-col md:flex-row md:items-center justify-between px-4 md:px-10 pt-4 md:pt-8 pb-4 md:pb-6 gap-4">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Billing & TPA</h1>
             <p className="text-sm text-gray-400 mt-1 font-medium">Manage Estimates, Pre-auth, Claims, and Dues</p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="relative">
+          <div className="flex flex-wrap items-center gap-2 md:gap-3 w-full md:w-auto">
+            <div className="relative w-full md:w-auto">
               <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Search size={16} className="text-gray-400" />
               </div>
@@ -100,7 +100,7 @@ export default function BillingPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search invoice, patient..."
-                className="cursor-text pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm w-72 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-gray-400 font-medium"
+                className="cursor-text pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm w-full md:w-72 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-gray-400 font-medium"
               />
             </div>
             <button 
@@ -125,7 +125,7 @@ export default function BillingPage() {
         </header>
 
         {/* Tabs */}
-        <div className="px-10 pb-6 flex items-center gap-6">
+        <div className="px-4 md:px-10 pb-4 md:pb-6 flex items-center gap-4 md:gap-6 overflow-x-auto whitespace-nowrap">
           {tabs.map((tab) => (
             <button
               key={tab}
@@ -143,7 +143,7 @@ export default function BillingPage() {
       </div>
 
       {/* Main Table Area */}
-      <div className="flex-1 overflow-auto p-10 scrollbar-hide">
+      <div className="flex-1 overflow-auto p-4 md:p-10 scrollbar-hide">
         <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-x-auto scrollbar-hide">
           <table className="w-full min-w-max text-sm text-left whitespace-nowrap">
             <thead className="bg-white text-gray-500 font-bold border-b border-gray-100">

@@ -26,13 +26,13 @@ export default function ReportsPage() {
       
       {/* Header Area */}
       <div className="bg-white shrink-0 z-10 shadow-sm border-b border-gray-100">
-        <header className="flex items-center justify-between px-10 pt-6">
+        <header className="flex flex-col md:flex-row md:items-center justify-between px-4 md:px-10 py-4 md:py-6 gap-4 border-b border-gray-100">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Reports & Analytics</h1>
             <p className="text-sm text-gray-400 mt-1 font-medium">Comprehensive insights into hospital performance</p>
           </div>
 
-          <div className="flex items-center gap-3 pb-6">
+          <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
             <button 
               onClick={() => setShowFilters(true)}
               className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors"
@@ -63,7 +63,7 @@ export default function ReportsPage() {
         </header>
 
         {/* Tabs */}
-        <div className="px-10 flex items-center gap-6">
+        <div className="px-4 md:px-10 flex items-center gap-4 md:gap-6 overflow-x-auto whitespace-nowrap scrollbar-hide pt-4">
           {tabs.map((tab) => (
             <button
               key={tab}
@@ -80,13 +80,13 @@ export default function ReportsPage() {
         </div>
       </div>
 
-      <div className="flex-1 overflow-auto p-10 scrollbar-hide space-y-8">
+      <div className="flex-1 overflow-auto p-4 md:p-10 scrollbar-hide space-y-8">
         
         {/* Dynamic Content based on Tab */}
         {activeTab === 'Financial' && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2">
             {/* KPI Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                 <div className="flex justify-between items-start mb-4">
                   <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center">
@@ -195,7 +195,7 @@ export default function ReportsPage() {
 
         {activeTab === 'Operational' && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                 <p className="text-sm font-semibold text-gray-500 mb-1">Average Length of Stay (ALOS)</p>
                 <h3 className="text-3xl font-bold text-gray-900">4.2 Days</h3>
@@ -223,7 +223,7 @@ export default function ReportsPage() {
 
         {activeTab === 'Marketing' && (
           <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                 <div className="flex items-center gap-3 mb-2">
                   <Users className="text-blue-600" size={20} />

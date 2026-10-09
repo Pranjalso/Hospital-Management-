@@ -59,14 +59,14 @@ export default function CampaignsPage() {
       
       {/* Header Area */}
       <div className="bg-white shrink-0 z-10 shadow-sm border-b border-gray-100">
-        <header className="flex items-center justify-between px-10 py-6">
+        <header className="flex flex-col md:flex-row md:items-center justify-between px-4 md:px-10 py-4 md:py-6 gap-4">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Marketing Campaigns</h1>
             <p className="text-sm text-gray-400 mt-1 font-medium">Track lead generation, spend, and ROI</p>
           </div>
 
-          <div className="flex items-center gap-3">
-            <div className="relative">
+          <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
+            <div className="relative w-full md:w-auto">
               <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Search size={16} className="text-gray-400" />
               </div>
@@ -75,7 +75,7 @@ export default function CampaignsPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search campaigns..."
-                className="cursor-text pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm w-72 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-gray-400 font-medium"
+                className="cursor-text pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm w-full md:w-72 bg-white focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder:text-gray-400 font-medium"
               />
             </div>
             <button 
@@ -94,10 +94,10 @@ export default function CampaignsPage() {
         </header>
       </div>
 
-      <div className="flex-1 overflow-auto p-10 scrollbar-hide space-y-8">
+      <div className="flex-1 overflow-auto p-4 md:p-10 scrollbar-hide space-y-8">
         
         {/* KPI Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
           {/* Card 1 */}
           <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex items-start gap-4 hover:shadow-md transition-shadow cursor-pointer">
             <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center shrink-0">

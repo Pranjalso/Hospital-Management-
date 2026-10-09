@@ -2,8 +2,9 @@
 
 import React, { useState } from "react";
 import { Plus, X, Calendar, User, Clock, Stethoscope, CheckCircle } from "lucide-react";
+import type { Appointment } from "@/app/(dashboard)/appointments/page";
 
-export default function BookAppointmentButton({ onBook }: { onBook?: (app: any) => void }) {
+export default function BookAppointmentButton({ onBook }: { onBook?: (app: Appointment) => void }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
